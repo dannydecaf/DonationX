@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 object DonationClient {
 
-    val serviceURL = "https://donationweb-hdip-mu-server.herokuapp.com"
+    val serviceURL = "https://donationx-multi-web-server.onrender.com"
 
     fun getApi() : DonationService {
 
