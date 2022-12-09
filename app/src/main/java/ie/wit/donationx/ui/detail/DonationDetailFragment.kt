@@ -35,14 +35,14 @@ class DonationDetailFragment : Fragment() {
         detailViewModel.observableDonation.observe(viewLifecycleOwner, Observer { render() })
 
         fragBinding.editDonationButton.setOnClickListener {
-            detailViewModel.updateDonation(loggedInViewModel.liveFirebaseUser.value?.email!!,
+            detailViewModel.updateDonation(loggedInViewModel.liveFirebaseUser.value?.uid!!,
                 args.donationid, fragBinding.donationvm?.observableDonation!!.value!!)
             findNavController().navigateUp()
         }
 
         fragBinding.deleteDonationButton.setOnClickListener {
             reportViewModel.delete(loggedInViewModel.liveFirebaseUser.value?.email!!,
-                detailViewModel.observableDonation.value?._id!!)
+                detailViewModel.observableDonation.value?.uid!!)
             findNavController().navigateUp()
         }
 
@@ -58,7 +58,7 @@ class DonationDetailFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        detailViewModel.getDonation(loggedInViewModel.liveFirebaseUser.value?.email!!,
+        detailViewModel.getDonation(loggedInViewModel.liveFirebaseUser.value?.uid!!,
             args.donationid)
 
     }
